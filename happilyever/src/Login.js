@@ -35,7 +35,7 @@ function nonFormik({errors, touched, values,isSubmitting}) {
         </label>
         <button disabled={isSubmitting}>Submit</button>
         <h2>No Account?</h2>
-        <h2><NavLink>Sign Up</NavLink></h2>
+        <NavLink>Sign Up</NavLink>
       </Form>
     </div>
   )
