@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios"
 
-function nonFormik({errors, touched, values,isSubmitting}) {
+function nonFormik({errors, touched, values, isSubmitting}) {
   const [users, addUser] = useState();
   useEffect(()=>{
     if(status){
@@ -29,13 +29,9 @@ function nonFormik({errors, touched, values,isSubmitting}) {
             name="password"
             placeholder="Must be at least 7 characters"/>
         </label>
-        <label>
-            I accept the Terms of Service 
-            <Field type="checkbox" name="tos" checked={values.tos}/>
-        </label>
         <button disabled={isSubmitting}>Submit</button>
         <h2>No Account?</h2>
-        <NavLink>Sign Up</NavLink>
+        <NavLink>Signup</NavLink>
       </Form>
     </div>
   )
@@ -45,8 +41,7 @@ const Login = withFormik({
     mapPropsToValues({username, password}){
         return {
             username: username || "",
-            password: password || "",
-            tos: tos || false
+            password: password || ""
         }
     },
     validationSchema: Yup.object().shape({
@@ -55,9 +50,7 @@ const Login = withFormik({
             .required("Email field is required"),
         password: Yup.string()
             .min(7, "Password must be at least 7 characters")
-            .required("Password field is required"),
-        tos: Yup.bool()
-            .required("You must accept our terms")
+            .required("Password field is required")
     }),
     handleSubmit(values, {resetForm}){
         axios.post(/*"API",*/ values)
