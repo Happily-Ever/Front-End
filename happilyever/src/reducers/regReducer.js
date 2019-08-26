@@ -21,7 +21,7 @@ export const regReducer = (state = initialState, action) => {
     case "REG_USER_FAILURE":
       return {
         ...state,
-        isRegistering: true
+        isRegistering: false
       };
 
     default:
