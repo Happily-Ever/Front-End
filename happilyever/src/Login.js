@@ -39,7 +39,7 @@ const Login = withFormik({
         password: Yup.string()
             .min(7, "Password must be at least 7 characters")
             .required("Password field is required")
-    })
+    }),
     handleSubmit(values){
         console.log(values);
     }
