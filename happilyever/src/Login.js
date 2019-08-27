@@ -22,15 +22,13 @@ function NonFormik({errors, touched, values, isSubmitting, status}) {
           {touched.email && errors.email && <p>{errors.email}</p>}
           <Field 
             type="text" 
-            name="username"
-            placeholder="No profanity, please"/>
+            name="username"/>
         </label>
         <label>Password
         {touched.password && errors.password && <p>{errors.password}</p>}
           <Field
             type="password" 
-            name="password"
-            placeholder="Must be at least 7 characters"/>
+            name="password"/>
         </label>
         <button disabled={isSubmitting}>Submit</button>
         <h2>No Account?</h2>
