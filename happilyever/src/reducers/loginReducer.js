@@ -16,11 +16,30 @@ export const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogged: true,
-        user: action.payload,
-        token: localStorage.getItem("token")
+        user: action.payload.data,
+        token: action.payload.token
       };
 
     case "LOGIN_USER_FAILURE":
+      return {
+        ...state,
+        isLogged: false,
+        error: "Login Failed"
+      };
+
+    case "LOGOUT_USER_START":
+      return {
+        ...state,
+        isLogged: true
+      };
+    case "LOGOUT_USER_SUCCESS":
+      return {
+        ...state,
+        isLogged: false,
+        token: localStorage.clear()
+      };
+
+    case "LOGOUT_USER_FAILURE":
       return {
         ...state,
         isLogged: false,
