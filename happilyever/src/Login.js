@@ -11,6 +11,9 @@ function nonFormik({errors, touched, values, isSubmitting}) {
       addUser([...users, status])
     }
   }, [status]);
+
+
+
   return (
     <div className="loginregister">
       <h1>Please Login</h1>
@@ -31,7 +34,7 @@ function nonFormik({errors, touched, values, isSubmitting}) {
         </label>
         <button disabled={isSubmitting}>Submit</button>
         <h2>No Account?</h2>
-        <NavLink>Signup</NavLink>
+        <NavLink /*to " "*/>Signup</NavLink>
       </Form>
     </div>
   )
