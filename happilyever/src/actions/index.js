@@ -24,7 +24,7 @@ export const loginUser = user => {
     axiosWithAuth()
       .post("*Link Here*", user)
       .then(res => {
-        localStorage.setItem("token", "*res value here*");
+        localStorage.setItem("token", res.data.token);
         dispatch({
           type: "LOGIN_USER_SUCCESS",
           payload: {
@@ -50,10 +50,15 @@ export const logoutUser = user => {
 /// Get list of weddings Action
 
 export const weddingsList = () => {
+  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "FETCH_WEDDINGS_START" });
     axiosWithAuth()
-      .get("*LINK HERE*")
+      .get("*LINK HERE*", {
+        headers: {
+          Authorization: token
+        }
+      })
       .then(res => {
         dispatch({ type: "FETCH_WEDDINGS_START", payload: res.data });
       })
@@ -66,10 +71,15 @@ export const weddingsList = () => {
 /// Add weddings to list Action
 
 export const addWedding = wedding => {
+  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "ADD_WEDDING_START" });
     axiosWithAuth()
-      .post("*LINK HERE*", wedding)
+      .post("*LINK HERE*", wedding, {
+        headers: {
+          Authorization: token
+        }
+      })
       .then(res => {
         dispatch({ type: "ADD_WEDDING_SUCCESS", payload: res.data });
       })
@@ -82,15 +92,39 @@ export const addWedding = wedding => {
 /// delete wedding action
 
 export const deleteWedding = id => {
+  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "DELETE_WEDDING_START" });
     axiosWithAuth()
-      .delete(`*http://LINK HERE${id}*`)
+      .delete(`*http://LINK HERE${id}*`, {
+        headers: {
+          Authorization: token
+        }
+      })
       .then(res => {
         dispatch({ type: "DELETE_WEDDING_SUCCESS", payload: res.data });
       })
       .catch(err => {
         dispatch({ type: "DELETE_WEDDING_FAILURE", payload: err.response });
+      });
+  };
+};
+
+export const editWedding = (wedding, id) => {
+  const token = localStorage.getItem("token");
+  return dispatch => {
+    dispatch({ type: "EDIT_WEDDING_START" });
+    axiosWithAuth()
+      .put(`*LINK HERE${id}*`, wedding, {
+        headers: {
+          Authorization: token
+        }
+      })
+      .then(res => {
+        dispatch({ type: "EDIT_WEDDING_SUCCESS", payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: "EDIT_WEDDING_FAILURE", payload: err.response });
       });
   };
 };
