@@ -4,7 +4,7 @@ import {NavLink} from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios"
 
-function nonFormik({errors, touched, values, isSubmitting, status}) {
+function NonFormik({errors, touched, values, isSubmitting, status}) {
   const [users, addUser] = useState();
   useEffect(()=>{
     if(status){
@@ -67,6 +67,6 @@ const Login = withFormik({
                setSubmitting(false);
              })
     }
-})(nonFormik);
+})(NonFormik);
 
 export default Login;
