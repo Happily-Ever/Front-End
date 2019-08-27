@@ -16,6 +16,7 @@ export const loginReducer = (state = initialState, action) => {
       return {
         ...state,
         isLogged: true,
+        user: action.payload,
         token: localStorage.getItem("token")
       };
 
