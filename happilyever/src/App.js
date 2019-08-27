@@ -8,7 +8,6 @@ function App() {
   return (
     <Router>
       <NavBar/>
-      <Link to="/register">Register Test</Link>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
     </Router>
