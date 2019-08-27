@@ -4,8 +4,8 @@ import {NavLink} from "react-router-dom";
 import * as Yup from "yup";
 import axios from "axios"
 
-function nonFormikReg({errors, touched, values, isSubmitting}) {
-  const [users, addUser] = useState();
+function nonFormikReg({errors, touched, values, isSubmitting, status}) {
+  const [users, addUser] = useState([]);
   useEffect(()=>{
     if(status){
       addUser([...users, status])
@@ -53,7 +53,7 @@ const Register = withFormik({
             .min(7, "Password must be at least 7 characters")
             .required("Password field is required")
     }),
-    handleSubmit(values, {resetForm}){
+    handleSubmit(values, {resetForm, setSubmitting}){
         axios.post(/*"API",*/ values)
              .then(result => {
                console.log(result);
