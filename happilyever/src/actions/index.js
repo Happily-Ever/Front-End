@@ -31,3 +31,11 @@ export const loginUser = user => {
       });
   };
 };
+
+/// Logout User Action
+
+export const logoutUser = user => {
+  return {
+    type: "LOGOUT_USER_SUCCESS"
+  };
+};
