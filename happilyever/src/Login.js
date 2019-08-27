@@ -46,7 +46,7 @@ const Login = withFormik({
         }
     },
     validationSchema: Yup.object().shape({
-        email: Yup.string()
+        username: Yup.string()
             .email("Must be a traditional email format")
             .required("Email field is required"),
         password: Yup.string()
