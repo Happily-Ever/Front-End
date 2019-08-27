@@ -37,7 +37,7 @@ export default function NavBar(){
         </Link>
         <img style={{width: "5rem"}} src={Logo} alt={"HappilyEver Logo"}/>
         <Nav>
-            <Link to="#" style={{textDecoration: "none", color: "white"}}>About Me</Link>
+            <Link to="/" style={{textDecoration: "none", color: "white"}}>About Us</Link>
             <Link to="/login" style={{textDecoration: "none", color: "white"}}>Login</Link>
         </Nav>
         </Bar>
