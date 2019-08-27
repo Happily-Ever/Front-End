@@ -1,17 +1,17 @@
-import React from 'react';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Login from "./components/Login.js";
+import Register from "./components/Register.js";
+import NavBar from "./components/NavBar.js";
 
 function App() {
   return (
     <Router>
-      <h1>Dummy Component</h1>
-      <Link to="/login">Login Test</Link><br/>
-      <Link to="/register">Register Test</Link>
+      <NavBar/>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
     </Router>
-    </div>
   );
 }
 
-export default App;
+export default App; 
