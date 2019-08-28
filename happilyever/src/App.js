@@ -4,6 +4,7 @@ import Login from "./components/Login.js";
 import Register from "./components/Register.js";
 import NavBar from "./components/NavBar.js";
 import CouplesList from "./components/CouplesList.js";
+import WeddingForm from "./components/WeddingForm.js";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <NavBar/>
       <Route path="/login" component={Login}/>
       <Route path="/register" component={Register}/>
+      <Route path="/add" component={WeddingForm}/>
       <Route path="/weddings" component={CouplesList}/>
     </Router>
   );
