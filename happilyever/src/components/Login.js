@@ -49,7 +49,7 @@ function NonFormik({errors, touched, values, isSubmitting, status}) {
     if(status){
       addUser([...users, status])
     }
-  }, [status]);
+  }, [status, users]);
 
 
 
@@ -75,7 +75,7 @@ function NonFormik({errors, touched, values, isSubmitting, status}) {
         </Label>
         <Button disabled={isSubmitting}>Submit</Button>
         <H2>No Account?</H2>
-        <NavLink to="/register" style={{textDecoration: "none", color: "white", fontSize: "2rem", textDecoration: "underline"}}>Signup</NavLink>
+        <NavLink to="/register" style={{color: "white", fontSize: "2rem", textDecoration: "underline"}}>Signup</NavLink>
         </Formo>
 
       </Form>

@@ -1,5 +1,5 @@
-import React from 'react'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import React from 'react';
+import { Card, Icon, Image } from 'semantic-ui-react';
 
 const CoupleCard = (props) => (
   <Card>
@@ -22,4 +22,4 @@ const CoupleCard = (props) => (
   </Card>
 )
 
-export default CoupleCard
+export default CoupleCard;

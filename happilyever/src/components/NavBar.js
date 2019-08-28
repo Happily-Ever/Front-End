@@ -1,7 +1,6 @@
 import React from "react";
 import {Link} from "react-router-dom";
 import styled from "styled-components";
-import Login from "./Login.js";
 import Logo from "../img/logo.png";
 
 const Bar = styled.div`
