@@ -32,11 +32,12 @@ justify-content: space-between;
 export default function NavBar(){
     return(
         <Bar>
-        <Link to="index.html" style={{textDecoration: "none"}}>
+        <Link to="/" style={{textDecoration: "none"}}>
             <H1>HappilyEver</H1>
         </Link>
         <img style={{width: "5rem"}} src={Logo} alt={"HappilyEver Logo"}/>
         <Nav>
+            <Link to="/weddings" style={{textDecoration: "none", color: "white"}}>View Weddings</Link>
             <Link to="/" style={{textDecoration: "none", color: "white"}}>About Us</Link>
             <Link to="/login" style={{textDecoration: "none", color: "white"}}>Login</Link>
         </Nav>
