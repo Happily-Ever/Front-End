@@ -8,7 +8,7 @@ const CoupleCard = (props) => (
       <Card.Header>{props.spouse1} and {props.spouse2}</Card.Header>
       <Card.Meta>
         <span className='date'>Married on {props.date}</span>
-      </Card.Meta>
+      </Card.Meta>  
       <Card.Description>
         {props.desc}
       </Card.Description>
