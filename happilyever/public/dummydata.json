@@ -1,0 +1,34 @@
+[{
+    "id": 0,
+    "pic": "http://tinyimg.io/i/7ssx2YT.jpg",
+    "spouse1": "Kara Belzer",
+    "spouse2": "Tim Appleby",
+    "date": "January 1, 2019",
+    "desc": "A beautiful seaside ceremony",
+    "planner": "Dave Böff",
+    "city": "San Diego, CA",
+    "venue": "The Fishery"
+},
+{
+    "id": 1,
+    "pic": "http://tinyimg.io/i/Ol0X0bk.jpg",
+    "spouse1": "Jeff Album",
+    "spouse2": "Dean Austin",
+    "date": "March 8, 2019",
+    "desc": "An intimate ceremony with stellar catering",
+    "planner": "Stefan Krump",
+    "city": "Lansing, MI",
+    "venue": "Lakeside Estates"
+},
+{
+    "id": 2,
+    "pic": "http://tinyimg.io/i/aCXntZj.jpg",
+    "spouse1": "Alfred Coxsone",
+    "spouse2": "Wilma Epps",
+    "date": "February 6, 2018",
+    "desc": "An over-the-top affair",
+    "planner": "Jackie Banque",
+    "city": "Athens, GA",
+    "venue": "Junkyard BBQ and Grill"
+}
+]
