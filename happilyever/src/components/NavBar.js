@@ -2,6 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import Logo from "../img/logo.png";
+import { connect } from "react-redux";
+import { logoutUser } from "../actions";
 
 const Bar = styled.div`
   margin: 0 auto;
@@ -28,14 +30,17 @@ const Nav = styled.nav`
   justify-content: space-between;
 `;
 
-export default function NavBar() {
+function NavBar(props) {
   return (
     <Bar>
-      <Link to="/" style={{ textDecoration: "none" }}>
+      <Link to="/welcome" style={{ textDecoration: "none" }}>
         <H1>HappilyEver</H1>
       </Link>
       <img style={{ width: "5rem" }} src={Logo} alt={"HappilyEver Logo"} />
       <Nav>
+        <Link to="/welcome" style={{ textDecoration: "none", color: "white" }}>
+          Welcome
+        </Link>
         <Link to="/add" style={{ textDecoration: "none", color: "white" }}>
           Add a Wedding
         </Link>
@@ -45,10 +50,33 @@ export default function NavBar() {
         <Link to="/" style={{ textDecoration: "none", color: "white" }}>
           About Us
         </Link>
-        <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
-          Login
-        </Link>
+        {props.isLogged ? (
+          <Link
+            onClick={props.logoutUser}
+            to="/login"
+            style={{ textDecoration: "none", color: "white" }}
+          >
+            Logout
+          </Link>
+        ) : (
+          <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
+            Login
+          </Link>
+        )}
       </Nav>
     </Bar>
   );
 }
+
+const mapStateToProps = state => {
+  console.log(state);
+
+  return {
+    isLogged: state.loginReducer.isLogged
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { logoutUser }
+)(NavBar);
