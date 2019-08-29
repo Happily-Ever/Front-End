@@ -9,7 +9,7 @@ width: 50%;
 display: flex;
 flex-direction: row;
 flex-wrap: wrap;
-justify-content: baseline;
+justify-content: flex-start;
 `
 
 const DivCard = styled.div`
@@ -21,7 +21,7 @@ export default function CouplesList() {
 const [couple, addCouple] = useState([]);
 
 useEffect(()=>{
-    axios.get("../../dummydata.json")
+    axios.get("https://lambda-wedding-planner.herokuapp.com/api/posts/all")
     .then(function(response){
         addCouple(response.data);
     })}, []);
@@ -32,12 +32,11 @@ return(
 <DivCard>
       <CoupleCard 
         key={couple.id}
-        pic={couple.pic}
-        spouse1={couple.spouse1}
-        spouse2={couple.spouse2}
-        date={couple.date}
-        desc={couple.desc}
-        planner={couple.planner}
+        pic={couple.item_photo}
+        couple_name={couple.couple_name}
+        wedding_date={couple.wedding_date}
+        wedding_theme={couple.wedding_theme}
+        wedding_location={couple.wedding_location}
     />
     </DivCard>)})}
       </DivWed>
