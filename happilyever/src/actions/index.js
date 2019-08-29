@@ -20,7 +20,7 @@ export const registerUser = () => {
 
 export const loginUser = user => {
   return dispatch => {
-    dispactch({ type: "LOGIN_USER_START" });
+    dispatch({ type: "LOGIN_USER_START" });
     axiosWithAuth()
       .post("*Link Here*", user)
       .then(res => {
@@ -49,18 +49,19 @@ export const logoutUser = user => {
 
 /// Get list of weddings Action
 
-export const weddingsList = () => {
+export const weddingsList = history => {
   const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "FETCH_WEDDINGS_START" });
     axiosWithAuth()
-      .get("*LINK HERE*", {
+      .get("*Link HERE*", {
         headers: {
           Authorization: token
         }
       })
       .then(res => {
-        dispatch({ type: "FETCH_WEDDINGS_START", payload: res.data });
+        dispatch({ type: "FETCH_WEDDINGS_SUCCESS", payload: res.data });
+        history.push("/weddings");
       })
       .catch(err => {
         dispatch({ type: "FETCH_WEDDINGS_FAILURE", paylaod: err.response });

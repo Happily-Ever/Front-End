@@ -15,6 +15,10 @@ import CardActionArea from "@material-ui/core/CardActionArea";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
 //Material Ui UseStyles
+import { connect } from "react-redux";
+import { weddingsList } from "../actions";
+import { Link } from "react-router-dom";
+
 const useStyles = makeStyles({
   card: {
     maxWidth: 345,
@@ -38,7 +42,7 @@ const useStyles = makeStyles({
   }
 });
 
-const WelcomePage = () => {
+const WelcomePage = props => {
   const classes = useStyles();
   return (
     <>
@@ -81,7 +85,7 @@ const WelcomePage = () => {
           </Grid>
           <Grid item lg={6}>
             <Card className={classes.card}>
-              <CardActionArea>
+              <CardActionArea onClick={props.weddingsList}>
                 <CardContent>
                   <Typography
                     variant="h5"
@@ -105,4 +109,14 @@ const WelcomePage = () => {
   );
 };
 
-export default WelcomePage;
+const mapStateToProps = state => {
+  console.log(state);
+  return {
+    weddings: state.weddingReducer.weddings
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  { weddingsList }
+)(WelcomePage);
