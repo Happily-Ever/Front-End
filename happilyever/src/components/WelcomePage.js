@@ -43,6 +43,7 @@ const useStyles = makeStyles({
 });
 
 const WelcomePage = props => {
+  console.log("PROPS IN HISTORY", props);
   const classes = useStyles();
   return (
     <>
@@ -61,46 +62,50 @@ const WelcomePage = props => {
         <Grid container spacing={1} className={classes.grid}>
           <Grid item lg={6}>
             <Card className={classes.card}>
-              <CardActionArea>
-                <CardContent>
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    align="center"
-                    style={{ color: "#fff" }}
-                  >
-                    Add a Wedding
-                  </Typography>
-                  <img
-                    src={rings}
-                    style={{
-                      marginLeft: "90px",
-                      height: "125px",
-                      paddingTop: "20px"
-                    }}
-                  />
-                </CardContent>
-              </CardActionArea>
+              <Link style={{ textDecoration: "none" }} to="/add">
+                <CardActionArea>
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      align="center"
+                      style={{ color: "#fff" }}
+                    >
+                      Add a Wedding
+                    </Typography>
+                    <img
+                      src={rings}
+                      style={{
+                        marginLeft: "90px",
+                        height: "125px",
+                        paddingTop: "20px"
+                      }}
+                    />
+                  </CardContent>
+                </CardActionArea>
+              </Link>
             </Card>
           </Grid>
           <Grid item lg={6}>
             <Card className={classes.card}>
-              <CardActionArea onClick={props.weddingsList}>
-                <CardContent>
-                  <Typography
-                    variant="h5"
-                    component="h2"
-                    align="center"
-                    style={{ color: "#fff" }}
-                  >
-                    View Couples
-                  </Typography>
-                  <img
-                    src={couples}
-                    style={{ marginLeft: "90px", paddingTop: "25px" }}
-                  />
-                </CardContent>
-              </CardActionArea>
+              <Link to="/weddings" style={{ textDecoration: "none" }}>
+                <CardActionArea onClick={props.weddingsList}>
+                  <CardContent>
+                    <Typography
+                      variant="h5"
+                      component="h2"
+                      align="center"
+                      style={{ color: "#fff" }}
+                    >
+                      View Couples
+                    </Typography>
+                    <img
+                      src={couples}
+                      style={{ marginLeft: "90px", paddingTop: "25px" }}
+                    />
+                  </CardContent>
+                </CardActionArea>
+              </Link>
             </Card>
           </Grid>
         </Grid>
