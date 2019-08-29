@@ -30,7 +30,8 @@ export const loginReducer = (state = initialState, action) => {
     case "LOGOUT_USER_START":
       return {
         ...state,
-        isLogged: true
+        isLogged: true,
+        token: action.payload
       };
     case "LOGOUT_USER_SUCCESS":
       return {
