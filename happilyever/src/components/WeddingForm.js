@@ -57,42 +57,35 @@ function NonFormik({errors, touched, values, isSubmitting, status}) {
       <H1>Add a Wedding</H1>
       <Form>
       <Formo>
-        <Label>Spouse #1<br/>
-          {touched.spouse1 && errors.spouse1 && <p>{errors.spouse1}</p>}
+        <Label>Couple Name<br/>
+          {touched.couple_name && errors.couple_name && <p>{errors.couple_name}</p>}
           <Field 
             type="text" 
-            name="spouse1"
-            style={{padding: ".5rem", borderRadius: "10px"}}/>
-        </Label>
-        <Label>Spouse #2<br/>
-        {touched.spouse2 && errors.spouse2 && <p>{errors.spouse2}</p>}
-          <Field
-            type="text" 
-            name="spouse2"
+            name="couple_name"
             style={{padding: ".5rem", borderRadius: "10px"}}/>
         </Label>
         <Label>Wedding Date<br/>
-        {touched.date && errors.date && <p>{errors.date}</p>}
+        {touched.wedding_date && errors.wedding_date && <p>{errors.wedding_date}</p>}
             <Field 
             type="text"
-            name="date"
+            name="wedding_date"
             style={{padding: ".5rem", borderRadius: "10px"}}/>
         </Label>
         <Label>City<br/>
-        {touched.city && errors.city && <p>{errors.city}</p>}
+        {touched.wedding_location && errors.wedding_location && <p>{errors.wedding_location}</p>}
             <Field 
             type="text"
-            name="city"
+            name="wedding_location"
             style={{padding: ".5rem", borderRadius: "10px"}}/>
         </Label>
-        <Label>Venue<br/>
-        {touched.venue && errors.venue && <p>{errors.venue}</p>}
+        <Label>Theme<br/>
+        {touched.wedding_theme && errors.wedding_theme && <p>{errors.wedding_theme}</p>}
             <Field 
             type="text"
-            name="venue"
+            name="wedding_theme"
             style={{padding: ".5rem", borderRadius: "10px"}}/>
         </Label>  
-        <Button disabled={isSubmitting}>Submit</Button>
+        <Button disabled={isSubmitting} type="submit">Submit</Button>
         </Formo>
       </Form>
     </LogReg>
@@ -100,29 +93,26 @@ function NonFormik({errors, touched, values, isSubmitting, status}) {
 }
 
 const WeddingForm = withFormik({
-    mapPropsToValues({spouse1, spouse2, date, city, venue}){
+    mapPropsToValues({couple_name, wedding_date, wedding_location, wedding_theme}){
         return {
-            spouse1: spouse1 || "",
-            spouse2: spouse2 || "",
-            date: date || "",
-            city: city || "",
-            venue: venue || ""
+            couple_name: couple_name || "",
+            wedding_date: wedding_date || "",
+            wedding_location: wedding_location || "",
+            wedding_theme: wedding_theme || ""
         }
     },
     validationSchema: Yup.object().shape({
-        spouse1: Yup.string()
+        couple_name: Yup.string()
             .required("This field is required"),
-        spouse2: Yup.string()
+        wedding_date: Yup.string()
             .required("This field is required"),
-        date: Yup.string()
+        wedding_location: Yup.string()
             .required("This field is required"),
-        city: Yup.string()
-            .required("This field is required"),
-        venue: Yup.string()
+        wedding_theme: Yup.string()
             .required("This field is required"),
     }),
     handleSubmit(values, {resetForm, setSubmitting}){
-        axios.post(/*"API",*/ values)
+        axios.post("https://lambda-wedding-planner.herokuapp.com/api/posts", values)
              .then(result => {
                console.log(result);
                resetForm();
