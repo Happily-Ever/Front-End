@@ -6,22 +6,23 @@ import { connect } from "react-redux";
 import { logoutUser } from "../actions";
 
 const Bar = styled.div`
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 60px;
-  background: rgba(0, 163, 255, 0.8);
-  padding: 0 20px;
-  align-content: space-between;
-  border: 1px solid rgba(0, 162, 255, 0.945);
+width: 100%;
+border-radius: 0;
+display: flex;
+justify-content: space-between;
+align-items: center;
+height: 70px;
+background: rgba(0, 163, 255, 0.8);
+padding: 0 20px;
+align-content: space-between;
+border: 1px solid rgba(0, 163, 255, 0.8);
+box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5);
 `;
 
 const H1 = styled.h1`
-  font-family: "Tangerine", cursive;
-  font-weight: bold;
-  font-size: 3rem;
-  color: white;
+color: white;
+text-shadow: 1px 1px rgba(0, 0, 0, 0.5);
+text-decoration: none;
 `;
 
 const Nav = styled.nav`
@@ -36,30 +37,30 @@ function NavBar(props) {
       <Link to="/welcome" style={{ textDecoration: "none" }}>
         <H1>HappilyEver</H1>
       </Link>
-      <img style={{ width: "5rem" }} src={Logo} alt={"HappilyEver Logo"} />
+      <img style={{ width: "100px" }} src={Logo} alt={"HappilyEver Logo"} />
       <Nav>
-        <Link to="/welcome" style={{ textDecoration: "none", color: "white" }}>
+        <Link to="/welcome" style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none" }}>
           Welcome
         </Link>
-        <Link to="/add" style={{ textDecoration: "none", color: "white" }}>
+        <Link to="/add" style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none"  }}>
           Add a Wedding
         </Link>
-        <Link to="/weddings" style={{ textDecoration: "none", color: "white" }}>
+        <Link to="/weddings" style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none"  }}>
           View Weddings
         </Link>
-        <Link to="/" style={{ textDecoration: "none", color: "white" }}>
+        <Link to="/" style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none"  }}>
           About Us
         </Link>
         {props.isLogged ? (
           <Link
             onClick={props.logoutUser}
             to="/login"
-            style={{ textDecoration: "none", color: "white" }}
+            style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none"  }}
           >
             Logout
           </Link>
         ) : (
-          <Link to="/login" style={{ textDecoration: "none", color: "white" }}>
+          <Link to="/login" style={{ marginLeft: "10px", color: "white", textShadow: "1px 1px rgba(0, 0, 0, 0.5)", textDecoration: "none"  }}>
             Login
           </Link>
         )}

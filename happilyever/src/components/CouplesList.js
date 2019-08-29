@@ -10,15 +10,13 @@ import couples from "../img/couples.png";
 
 const DivWed = styled.div`
   margin: 1rem auto;
-  width: 50%;
   display: flex;
-  flex-direction: row;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  align-items: center;
 `;
 
 const DivCard = styled.div`
-  margin: 2rem;
+  margin: 1rem;
 `;
 
 function CouplesList(props) {
