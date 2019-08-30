@@ -47,6 +47,7 @@ function CouplesList(props) {
               <Grid item={6}>
                 <DivCard>
                   <CoupleCard
+                    wedding={wedding}
                     key={wedding.id}
                     pic={wedding.item_photo}
                     couple_name={wedding.couple_name}
@@ -66,7 +67,6 @@ function CouplesList(props) {
 }
 
 const mapStateToProps = state => {
-  console.log("STATE IN COUPLES LIST", state.weddingReducer.weddings);
   return {
     weddings: state.weddingReducer.weddings,
     isLoading: state.weddingReducer.isLoading
