@@ -12,6 +12,7 @@ import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { deleteWedding, weddingToEdit } from "../actions";
+import EditWeddingForm from "./EditWeddingForm";
 
 const useStyles = makeStyles({
   card: {
@@ -20,7 +21,6 @@ const useStyles = makeStyles({
 });
 
 function CoupleCard(props) {
-  console.log("PROPS IN COUPLE CARD", props);
   const classes = useStyles();
 
   return (
