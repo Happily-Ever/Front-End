@@ -8,6 +8,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import CouplesList from "./components/CouplesList.js";
 import WeddingForm from "./components/WeddingForm.js";
 import PrivateRoute from "./components/PrivateRoute";
+import EditWeddingForm from "./components/EditWeddingForm";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
           <Route exact path="/login" component={Login} />
           <Route exact path="/register" component={Register} />
           <PrivateRoute exact path="/add" component={WeddingForm} />
+          <Route exact path="/edit/:id" component={EditWeddingForm} />
           <Route exact path="/weddings" component={CouplesList} />
           <Route path="/" component={WelcomePage} />
         </Switch>

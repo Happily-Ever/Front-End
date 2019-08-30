@@ -1,27 +1,27 @@
 const initialState = {
-  newWedding: {},
+  wedding: null,
   isLoading: false,
   token: localStorage.getItem("token"),
   error: ""
 };
 
-export const editWeddingReducer = (state = initialState, action) => {
+export const getWeddingToEdit = (state = initialState, action) => {
   switch (action.type) {
-    case "EDIT_WEDDING_START":
+    case "GET_WTE_START":
       return {
         ...state,
         isLoading: true,
         token: localStorage.getItem("token")
       };
 
-    case "EDIT_WEDDING_SUCCESS":
+    case "GET_WTE_SUCCESS":
       return {
         ...state,
         isLoading: false,
-        newWedding: action.payload
+        wedding: action.payload
       };
 
-    case "EDIT_WEDDING_FAILURE":
+    case "GET_WTE_FAILURE":
       return {
         ...state,
         isLoading: false,

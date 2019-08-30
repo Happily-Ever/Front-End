@@ -1,10 +1,9 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { withFormik, Form, Field } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import { addWedding } from "../actions";
+import { editWedding } from "../actions";
 
 const LogReg = styled.div`
   display: flex;
@@ -43,10 +42,25 @@ const Button = styled.button`
   margin: 1rem auto;
 `;
 
-function NonFormik({ errors, touched, values, isSubmitting, status }) {
+function NonFormik({
+  errors,
+  touched,
+  values,
+  isSubmitting,
+  status,
+  editWedding,
+  match,
+ wedding
+}) {
+ 
+
+  
+
+  console.log("WEDDING IN STATE", wedding);
+
   return (
     <LogReg>
-      <H1>Add a Wedding</H1>
+      <H1>Edit a Wedding</H1>
       <Form>
         <Formo>
           <Label>
@@ -97,7 +111,11 @@ function NonFormik({ errors, touched, values, isSubmitting, status }) {
               style={{ padding: ".5rem", borderRadius: "10px" }}
             />
           </Label>
-          <Button disabled={isSubmitting} type="submit">
+          <Button
+            onClick={() => editWedding(wedding.id)}
+            disabled={isSubmitting}
+            type="submit"
+          >
             Submit
           </Button>
         </Formo>
@@ -106,9 +124,16 @@ function NonFormik({ errors, touched, values, isSubmitting, status }) {
   );
 }
 
+const mapStateToProps = state => {
+  console.log("EDIT WEDDING FORM", state.getWeddingToEdit.wedding);
+  return {
+    wedding: state.getWeddingToEdit.wedding
+  };
+};
+
 export default connect(
-  null,
-  { addWedding }
+  mapStateToProps,
+  { editWedding }
 )(
   withFormik({
     mapPropsToValues({
@@ -131,7 +156,9 @@ export default connect(
       wedding_theme: Yup.string().required("This field is required")
     }),
     handleSubmit(values, { props }) {
-      props.addWedding(
+      console.log("PROPS IN COUPLE", props);
+      console.log(values);
+      props.editWedding(
         {
           couple_name: values.couple_name,
           wedding_date: values.wedding_date,

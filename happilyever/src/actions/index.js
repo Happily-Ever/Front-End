@@ -30,7 +30,6 @@ export const loginUser = (user, history) => {
     axiosWithAuth()
       .post("https://lambda-wedding-planner.herokuapp.com/api/auth/login", user)
       .then(res => {
-        console.log("LOOKING FOR TOKEN IN RESPONSE", res);
         localStorage.setItem("token", res.data.token);
         dispatch({
           type: "LOGIN_USER_SUCCESS",
@@ -63,7 +62,6 @@ export const weddingsList = history => {
     axiosWithAuth()
       .get("https://lambda-wedding-planner.herokuapp.com/api/posts/all")
       .then(res => {
-        console.log(res.data);
         dispatch({ type: "FETCH_WEDDINGS_SUCCESS", payload: res.data });
         history.push("/weddings");
       })
@@ -82,7 +80,6 @@ export const addWedding = (wedding, history) => {
     axiosWithAuth()
       .post("https://lambda-wedding-planner.herokuapp.com/api/posts", wedding)
       .then(res => {
-        console.log("ADD WEDDING ACTION", res);
         dispatch({ type: "ADD_WEDDING_SUCCESS", payload: res.data });
         history.push("/weddings");
       })
@@ -99,11 +96,7 @@ export const deleteWedding = id => {
   return dispatch => {
     dispatch({ type: "DELETE_WEDDING_START" });
     axiosWithAuth()
-      .delete(`*http://LINK HERE${id}*`, {
-        headers: {
-          Authorization: token
-        }
-      })
+      .delete(`https://lambda-wedding-planner.herokuapp.com/api/posts/${id}`)
       .then(res => {
         dispatch({ type: "DELETE_WEDDING_SUCCESS", payload: res.data });
       })
@@ -113,21 +106,37 @@ export const deleteWedding = id => {
   };
 };
 
-export const editWedding = (wedding, id) => {
+/// Put edited Wedding
+export const editWedding = (id, history) => {
   const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "EDIT_WEDDING_START" });
     axiosWithAuth()
-      .put(`*LINK HERE${id}*`, wedding, {
-        headers: {
-          Authorization: token
-        }
-      })
+      .put(`https://lambda-wedding-planner.herokuapp.com/api/posts/${id}`)
       .then(res => {
         dispatch({ type: "EDIT_WEDDING_SUCCESS", payload: res.data });
+         history.push("/weddings")
       })
       .catch(err => {
         dispatch({ type: "EDIT_WEDDING_FAILURE", payload: err.response });
+      });
+  };
+};
+
+///  Get wedding To Edit
+
+export const weddingToEdit = id => {
+  const token = localStorage.getItem("token");
+  return dispatch => {
+    dispatch({ type: "GET_WTE_START" });
+    axiosWithAuth()
+      .get(`https://lambda-wedding-planner.herokuapp.com/api/posts/${id}`)
+      .then(res => {
+        console.log("RES IN SINGLE USER WITH EDIT BUTTON", res);
+        dispatch({ type: "GET_WTE_SUCCESS", payload: res.data });
+      })
+      .catch(err => {
+        dispatch({ type: "GET_WTE_FAILURE", payload: err.response });
       });
   };
 };

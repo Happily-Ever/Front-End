@@ -111,7 +111,6 @@ export default connect(
         .required("Password field is required")
     }),
     handleSubmit(values, { props }) {
-      console.log("VALUES IN FORM", values);
       props.loginUser(
         {
           username: values.username,

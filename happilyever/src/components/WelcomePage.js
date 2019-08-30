@@ -115,7 +115,6 @@ const WelcomePage = props => {
 };
 
 const mapStateToProps = state => {
-  console.log(state);
   return {
     weddings: state.weddingReducer.weddings
   };
