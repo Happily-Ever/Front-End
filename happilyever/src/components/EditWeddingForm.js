@@ -50,12 +50,8 @@ function NonFormik({
   status,
   editWedding,
   match,
- wedding
+  wedding
 }) {
- 
-
-  
-
   console.log("WEDDING IN STATE", wedding);
 
   return (
@@ -111,11 +107,7 @@ function NonFormik({
               style={{ padding: ".5rem", borderRadius: "10px" }}
             />
           </Label>
-          <Button
-            onClick={() => editWedding(wedding.id)}
-            disabled={isSubmitting}
-            type="submit"
-          >
+          <Button onClick={() => editWedding(wedding.id)} type="submit">
             Submit
           </Button>
         </Formo>
@@ -125,7 +117,6 @@ function NonFormik({
 }
 
 const mapStateToProps = state => {
-  console.log("EDIT WEDDING FORM", state.getWeddingToEdit.wedding);
   return {
     wedding: state.getWeddingToEdit.wedding
   };
