@@ -23,8 +23,6 @@ export const registerUser = (user, history) => {
 /// Login User Action
 
 export const loginUser = (user, history) => {
-  console.log("LOGIN ACTION", history);
-  console.log("USER IN ACTION", user);
   return dispatch => {
     dispatch({ type: "LOGIN_USER_START" });
     axiosWithAuth()
@@ -56,12 +54,12 @@ export const logoutUser = user => {
 /// Get list of weddings Action
 
 export const weddingsList = history => {
-  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "FETCH_WEDDINGS_START" });
     axiosWithAuth()
       .get("https://lambda-wedding-planner.herokuapp.com/api/posts/all")
       .then(res => {
+        console.log("RESSsssssssss", res);
         dispatch({ type: "FETCH_WEDDINGS_SUCCESS", payload: res.data });
         history.push("/weddings");
       })
@@ -74,7 +72,6 @@ export const weddingsList = history => {
 /// Add weddings to list Action
 
 export const addWedding = (wedding, history) => {
-  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "ADD_WEDDING_START" });
     axiosWithAuth()
@@ -92,7 +89,6 @@ export const addWedding = (wedding, history) => {
 /// delete wedding action
 
 export const deleteWedding = id => {
-  const token = localStorage.getItem("token");
   return dispatch => {
     dispatch({ type: "DELETE_WEDDING_START" });
     axiosWithAuth()
@@ -108,14 +104,15 @@ export const deleteWedding = id => {
 
 /// Put edited Wedding
 export const editWedding = (id, history) => {
-  const token = localStorage.getItem("token");
+  console.log("ID IN EDIT WEDDING", id, history);
+
   return dispatch => {
     dispatch({ type: "EDIT_WEDDING_START" });
     axiosWithAuth()
       .put(`https://lambda-wedding-planner.herokuapp.com/api/posts/${id}`)
       .then(res => {
         dispatch({ type: "EDIT_WEDDING_SUCCESS", payload: res.data });
-         history.push("/weddings")
+        history.push("/weddings");
       })
       .catch(err => {
         dispatch({ type: "EDIT_WEDDING_FAILURE", payload: err.response });
@@ -126,7 +123,7 @@ export const editWedding = (id, history) => {
 ///  Get wedding To Edit
 
 export const weddingToEdit = id => {
-  const token = localStorage.getItem("token");
+  console.log("ID IN ACTION", id);
   return dispatch => {
     dispatch({ type: "GET_WTE_START" });
     axiosWithAuth()
@@ -136,6 +133,7 @@ export const weddingToEdit = id => {
         dispatch({ type: "GET_WTE_SUCCESS", payload: res.data });
       })
       .catch(err => {
+        console.log(err.response);
         dispatch({ type: "GET_WTE_FAILURE", payload: err.response });
       });
   };
